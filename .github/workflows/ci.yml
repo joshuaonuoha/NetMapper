@@ -1,0 +1,40 @@
+name: CI
+
+# "CI/CD lite": every push and pull request to main is automatically
+# linted and tested. There's no deployment step (this is a CLI tool,
+# not a service), so CI ends at "tests pass" -- that's the whole pipeline.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  lint-and-test:
+    runs-on: ubuntu-latest
+
+    strategy:
+      matrix:
+        python-version: ["3.10", "3.11", "3.12"]
+
+    steps:
+      - name: Check out repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python ${{ matrix.python-version }}
+        uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+          cache: "pip"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+          pip install -r requirements-dev.txt
+
+      - name: Lint with flake8
+        run: flake8 . --max-line-length=100 --exclude=.venv,venv
+
+      - name: Run tests with pytest
+        run: pytest tests/ -v
