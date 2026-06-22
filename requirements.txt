@@ -1,0 +1,17 @@
+# NetMapper runtime dependencies
+#
+# Dependencies are added incrementally, phase by phase, so that
+# `pip install -r requirements.txt` always matches what main.py
+# actually imports at the current stage of development.
+#
+# Phase 1 (Interface Discovery) uses only the Python standard library
+# (subprocess, socket, re, dataclasses) -- no third-party packages yet.
+
+# --- Uncomment as later phases are implemented ---
+# nmap-python       # Phase 2 / 6 - Nmap host discovery + detailed scanning
+# pandas            # Phase 10 - spreadsheet generation
+# openpyxl          # Phase 10 - .xlsx export
+# networkx          # Phase 9  - topology graph construction
+# matplotlib        # Phase 9  - graph visualization
+# mac-vendor-lookup  # Phase 5  - vendor identification via OUI
+# scapy             # Optional - packet capture (Phase 7)

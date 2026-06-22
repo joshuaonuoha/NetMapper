@@ -1,0 +1,33 @@
+# --- Python ---
+__pycache__/
+*.py[cod]
+*$py.class
+*.egg-info/
+.eggs/
+
+# --- Virtual environments ---
+venv/
+.venv/
+env/
+
+# --- Testing / linting caches ---
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+htmlcov/
+.coverage
+
+# --- NetMapper generated output (do not commit scan results) ---
+output/
+*.xlsx
+*.json
+!sample_data/*.json
+network_topology.png
+
+# --- Editor / OS cruft ---
+.vscode/
+.idea/
+.DS_Store
+
+# --- Environment / secrets ---
+.env

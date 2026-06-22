@@ -1,0 +1,7 @@
+# Development-only dependencies (testing, linting)
+# Install with: pip install -r requirements-dev.txt
+# (this also installs requirements.txt via the -r line below)
+-r requirements.txt
+
+pytest>=8.0
+flake8>=7.0
