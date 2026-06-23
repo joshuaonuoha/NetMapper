@@ -20,6 +20,7 @@ Planned, added one phase per feature branch:
 """
 
 from interface_discovery import discover_interface
+from net_scanner import scan_network
 
 
 def main() -> None:
@@ -33,6 +34,11 @@ def main() -> None:
     print(f"Subnet:      {info.subnet_cidr}")
     print(f"Gateway:     {info.gateway}")
     print(f"Hostname:    {info.hostname}")
+
+    print("\nPhase 2: Scanning network for devices...\n")
+    hosts = scan_network(info.subnet_cidr)
+    for host in hosts:
+        print(f"Found: {host}")
 
 
 if __name__ == "__main__":
