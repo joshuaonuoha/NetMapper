@@ -21,8 +21,8 @@ Planned, one phase per feature branch:
 
 from interface_discovery import discover_interface
 from net_scanner import scan_network
-
-
+from arp_collector import collect_arp, enrich_devices
+from hostname_resolver import resolve_all_hostnames
 def main() -> None:
     print("=== NetMapper ===")
 
@@ -47,7 +47,17 @@ def main() -> None:
         for device in devices:
             print(f"  {device.ip_address:<18} last seen: {device.last_seen}")
 
+    # ── Phase 3 ──────────────────────────────────────────────────────────────
+    print("\nPhase 3: Collecting ARP table...\n")
+    arp_entries = collect_arp()
+    enrich_devices(devices, arp_entries)
+    print(f"  Found {len(arp_entries)} ARP entries:\n")
+    for device in devices:
+        mac = device.mac_address if device.mac_address else "unknown"
+        print(f"  {device.ip_address:<18} MAC: {mac}")
 
+    # ── Phase 4: Hostname Resolution ─────────────────────────────────────────
+    print("\nPhase 4: Resolving hostnames...\n")
+    resolve_all_hostnames(devices)
 if __name__ == "__main__":
     main()
-
