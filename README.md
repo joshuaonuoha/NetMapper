@@ -117,3 +117,39 @@ git push -u origin feature/phase-2-network-scanner
 
 MIT (add a `LICENSE` file before making the repo public, if you want
 this license).
+ GNU nano 6.2                        README.md              
+
+ach phase is built on its own branch and merged once CI is g
+
+``bash
+it checkout -b feature/phase-2-network-scanner
+ ... implement + test ...
+it push -u origin feature/phase-2-network-scanner
+ open a PR into main, let CI run, then merge
+``
+
+# License
+
+IT (add a `LICENSE` file before making the repo public, if y
+his license).
+
+
+
+
+
+ GNU nano 6.2                        README.md              
+
+ach phase is built on its own branch and merged once CI is g
+
+``bash
+it checkout -b feature/phase-2-network-scanner
+ ... implement + test ...
+it push -u origin feature/phase-2-network-scanner
+ open a PR into main, let CI run, then merge
+``
+
+# License
+
+IT (add a `LICENSE` file before making the repo public, if y
+his license).
+
